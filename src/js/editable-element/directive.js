@@ -128,6 +128,10 @@ function($parse, $compile, editableThemes, $rootScope, $document, editableContro
             elem.bind(editableOptions.activationEvent, function(e) {
               e.preventDefault();
               e.editable = eCtrl;
+
+              // Emulate body click as well to close other fields
+              $document.triggerHandler('click');
+
               scope.$apply(function(){
                 scope.$form.$show();
               });
